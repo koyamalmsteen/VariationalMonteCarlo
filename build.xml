@@ -1,0 +1,12 @@
+<?xml version="1.0">
+<project name="vmc" default="all" basedir=".">
+  <target name="all" depends="clean, init, vmc"/>
+  <target name="clean">
+  </target>
+
+  <target name="init">
+  </target>
+
+  <target name="vmc">
+  </target>
+</project>
