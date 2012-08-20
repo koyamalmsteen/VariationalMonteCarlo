@@ -1,0 +1,77 @@
+#
+# Makefile for centos
+#
+#FC = f95
+FC = ifort
+CC = gcc
+PROGRAM = a.mpi
+ARCH = DEC
+.SUFFIXES : .o .c .f90
+#
+#
+OBJS_C=output_vector.o output_xi.o output_xi_field.o output_etc.o output_math_conditions.o output_phys_conditions.o output_energy.o output_hfo.o output_calc_time.o output_cor.o output_charge_density.o output_coefficient.o output_pole.o
+#
+#
+OBJS_MAIN=global_variables.o vmc.o energy.o check_flat_site_number.o count_number_xi.o output.o energy_zero_power.o estimate_use_memory.o display_h_pow.o operator_power1.o operator_power2.o operator_power1_cd.o operator_power2_cd.o input_splited_energy0.o input_splited_cor_number.o input_splited_cor_number_power.o input_splited_cor_general.o input_cor_number.o input_cor_general.o input_cor_number_power1.o input_cor_general_power1.o input_splited_cor_general_power.o input_cor_general_power2.o input_cor_number_power2.o input_splited_energy_power.o calc_total_pole.o error_bar_a.o error_bar_b.o error_bar_c.o calc_alpha_p_psi1.o calc_alpha_p_p_psi1.o calc_alpha_h_p_psi1.o plane_with_field.o
+#
+#
+OBJS_INIT=set_2d_system.o set_grad.o count_site_number.o init_global_variables.o init_global_variables_after.o init_global_variables_2dim.o init_global_variables_lieb.o init_global_variables_mielke.o init_global_variables_tasaki.o allocate_global_variables.o
+#
+#
+OBJS_POWER=energy_power.o calc_element_pow3.o calc_element_pow5.o min1.o min1_lag.o min1_nume.o min2.o min2_lag.o min2_nume.o
+OBJS_POWER_ZERO=pow5_zero.o pow4_zero.o pow3_zero.o pow2_zero.o pow1_zero.o
+#
+#
+OBJS_ELECTRIC_FIELD=lambda_field.o calc_pole0.o
+#
+#
+OBJS_CALC_HAMILTONIAN=calc_element.o state_include.o choice_ket_vector.o calc_acceptance_ratio.o invert.o trash.o correct_montecarlo_sample.o
+#
+#
+OBJS_ZERO=zero_approx.o plane.o hf.o make_fock_matrix.o calc_new_rho.o
+#
+#
+OBJS_GAMMA=site_table2empty_site_table.o choice_gamma_sigma.o choice_new_gamma.o choice_new_gamma_part1.o choice_new_gamma_part1_projection.o choice_new_gamma_part2.o choice_gamma_sigma_projection.o choice_new_gamma_projection.o
+#
+#
+OBJS_INNER_PRODUCT =make_d_tilde.o jastrow.o
+#
+#
+OBJS_RANDOM=random_init.o fortran_random.o fortran_random2.o
+#
+#
+OBJS_COR = cor_number.o cor_general.o charge.o sxsy.o sz.o super.o charge_density.o charge_density_power.o pole_power.o sz_power.o charge_power.o cor_number_power.o cor_general_power.o sxsy_power.o sxsy_nume3_1.o sxsy_nume5.o super_power.o super_nume3_1.o super_nume5.o
+#
+OBJS_COR_ZERO = cor_zero.o sz_zero.o sxsy_zero.o charge_zero.o super_zero.o charge_density_zero.o pole_zero.o
+#
+OBJS_CHECK = error_check.o stat_check.o parameter_check.o
+#
+#
+OBJS = $(OBJS_MAIN) $(OBJS_INIT) $(OBJS_CALC_HAMILTONIAN) $(OBJS_ZERO) $(OBJS_GAMMA) $(OBJS_INNER_PRODUCT) $(OBJS_CHECK) $(OBJS_RANDOM) $(OBJS_POWER) $(OBJS_POWER_ZERO) $(OBJS_COR) $(OBJS_COR_ZERO) $(OBJS_C) $(OBJS_ELECTRIC_FIELD)
+SRCS = $(OBJS:.o=.f90)
+#
+#
+#
+OPTN_MPI_INCLUDE = -I/usr/local/include
+OPTN_HEADER_INCLUDE = -I$(HOME)/vmc/src
+OPTN_TUNE = -O
+## 
+OPTN_MPI_LIB = -lmpich -L/usr/local/lib/
+OPTN_MPI_PROF =-lfmpich -llmpe -lmpe -lrt -L/usr/local/lib
+OPTN_MATH_LIB =  -lm -lblas -llapack -lslatec -L$(HOME)/lib
+##
+OPTN_COMPILE = $(OPTN_MPI_INCLUDE) $(OPTN_HEADER_INCLUDE)
+OPTN_LINK = $(OPTN_MPI_LIB) $(OPTN_MPI_PROF) $(OPTN_MATH_LIB)
+#OPTN_LINK = $(OPTN_MPI_LIB) $(OPTN_MATH_LIB)
+
+$(PROGRAM) : $(OBJS)
+	$(FC) -pg -o $(PROGRAM) $(OBJS) $(OPTN_LINK) $(OPTN_TUNE)
+.f90.o :
+#	$(FC) -pg -cpp -c -warn unused $(OPTN_COMPILE) $(OPTN_TUNE) $< -o $@
+	$(FC) -pg -cpp -c $(OPTN_COMPILE) $(OPTN_TUNE) $< -o $@
+.c.o :
+	$(CC) -pg -c $(OPTN_COMPILE) $< -o $@
+$(OBJS) : parameter.h
+
+clean :
+	rm *.o 
