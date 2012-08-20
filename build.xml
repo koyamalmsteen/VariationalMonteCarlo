@@ -1,12 +1,16 @@
-<?xml version="1.0">
+<?xml version="1.0"?>
 <project name="vmc" default="all" basedir=".">
-  <target name="all" depends="clean, init, vmc"/>
+  <property file="build.properties"/>
+  <property environment="env"/>
+  <property name="hostname" value="${env.HOSTNAME}"/>
+
+  <target name="all" depends="clean, init, compile"/>
   <target name="clean">
   </target>
 
   <target name="init">
-    <exec executable="sudo">
-      <arg line="yum -y install gcc"/>
+    <exec executable="yum">
+      <arg line="-y install gcc gcc-gfortran"/>
     </exec>
   </target>
 
