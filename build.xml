@@ -10,7 +10,7 @@
 
   <target name="init">
     <exec executable="yum">
-      <arg line="-y install gcc gcc-gfortran"/>
+      <arg line="-y install gcc gcc-gfortran mpich2 mpich2-devel mpich2-doc"/>
     </exec>
   </target>
 
