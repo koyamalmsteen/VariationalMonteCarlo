@@ -30,9 +30,9 @@ subroutine input_splited_cor_number(sample_number,tmp_sz0,tmp_charge0,&
              +tmp_charge_density0(i_count)/dble(dble(MAX_MONTECARLO_SAMPLE)/5)
      end do
      do i_count=1,TOTAL_SITE_NUMBER
-        splited_pole0(1)=splited_pole0(1)+ &
-             +xaxis(i_count)*(1-tmp_charge_density0(i_count)) &
-             /dble(dble(MAX_MONTECARLO_SAMPLE)/5)
+        splited_pole0(1)=splited_pole0(1) &
+             + xaxis(i_count)*(1-tmp_charge_density0(i_count)) &
+             / dble(dble(MAX_MONTECARLO_SAMPLE)/5)
      end do
   else if( mod(sample_number,5)==2 ) then
      do i_count=1,max_number_xi
@@ -46,7 +46,7 @@ subroutine input_splited_cor_number(sample_number,tmp_sz0,tmp_charge0,&
              +tmp_charge_density0(i_count)/dble(MAX_MONTECARLO_SAMPLE/5)
      end do
      do i_count=1,TOTAL_SITE_NUMBER
-        splited_pole0(2)=splited_pole0(2)+ &
+        splited_pole0(2)=splited_pole0(2) &
              +xaxis(i_count)*(1-tmp_charge_density0(i_count)) &
              /dble(dble(MAX_MONTECARLO_SAMPLE)/5)
      end do
@@ -62,7 +62,7 @@ subroutine input_splited_cor_number(sample_number,tmp_sz0,tmp_charge0,&
              +tmp_charge_density0(i_count)/dble(MAX_MONTECARLO_SAMPLE/5)
      end do
      do i_count=1,TOTAL_SITE_NUMBER
-        splited_pole0(3)=splited_pole0(3)+ &
+        splited_pole0(3)=splited_pole0(3) &
              +xaxis(i_count)*(1-tmp_charge_density0(i_count)) &
              /dble(dble(MAX_MONTECARLO_SAMPLE)/5)
      end do
@@ -78,7 +78,7 @@ subroutine input_splited_cor_number(sample_number,tmp_sz0,tmp_charge0,&
              +tmp_charge_density0(i_count)/dble(MAX_MONTECARLO_SAMPLE/5)
      end do
      do i_count=1,TOTAL_SITE_NUMBER
-        splited_pole0(4)=splited_pole0(4)+ &
+        splited_pole0(4)=splited_pole0(4) &
              +xaxis(i_count)*(1-tmp_charge_density0(i_count)) &
              /dble(dble(MAX_MONTECARLO_SAMPLE)/5)
      end do
@@ -94,7 +94,7 @@ subroutine input_splited_cor_number(sample_number,tmp_sz0,tmp_charge0,&
              +tmp_charge_density0(i_count)/dble(MAX_MONTECARLO_SAMPLE/5)
      end do
      do i_count=1,TOTAL_SITE_NUMBER
-        splited_pole0(5)=splited_pole0(5)+ &
+        splited_pole0(5)=splited_pole0(5) &
              +xaxis(i_count)*(1-tmp_charge_density0(i_count)) &
              /dble(dble(MAX_MONTECARLO_SAMPLE)/5)
      end do

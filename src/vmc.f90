@@ -48,7 +48,8 @@ program main
 !
   real(8),dimension(:),allocatable :: sz_nume1,sz_nume2,sz_nume3_1,sz_nume3_2,sz_nume4,sz_nume5
   real(8),dimension(:),allocatable :: charge_nume1,charge_nume2,charge_nume3_1,charge_nume3_2,charge_nume4,charge_nume5
-  real(8),dimension(:),allocatable :: charge_density_nume1,charge_density_nume2,charge_density_nume3_1,charge_density_nume3_2,charge_density_nume4,charge_density_nume5
+  real(8),dimension(:),allocatable :: charge_density_nume1,charge_density_nume2,charge_density_nume3_1,charge_density_nume3_2
+  real(8),dimension(:),allocatable :: charge_density_nume4,charge_density_nume5
   real(8),dimension(:),allocatable :: sxsy_nume1,sxsy_nume2,sxsy_nume3_1,sxsy_nume3_2,sxsy_nume4,sxsy_nume5
   real(8),dimension(:),allocatable :: super_nume1,super_nume2,super_nume3_1,super_nume3_2,super_nume4,super_nume5
   real(8),dimension(:),allocatable :: buff_cor,buff_cd

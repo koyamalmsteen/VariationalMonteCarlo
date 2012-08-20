@@ -1,7 +1,8 @@
 #
 # Makefile for centos
 #
-FC = f95
+#FC = f95
+FC = mpif90
 #FC = ifort
 CC = gcc
 PROGRAM = a.mpi
@@ -52,7 +53,7 @@ SRCS = $(OBJS:.o=.f90)
 #
 #
 #
-OPTN_MPI_INCLUDE = -I/usr/local/include
+OPTN_MPI_INCLUDE = -I/usr/include/mpich2-i386
 OPTN_HEADER_INCLUDE = -I$(HOME)/vmc/src
 OPTN_TUNE = -O
 ## 
