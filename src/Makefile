@@ -1,7 +1,7 @@
 #
 # gmakeMakefile
 #
-centos :
-	$(MAKE) -f Make.centos
+sl6 :
+	$(MAKE) -f Make.sl6
 clean :
 	rm *.o ; rm *.mod

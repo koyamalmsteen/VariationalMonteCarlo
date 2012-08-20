@@ -1,8 +1,8 @@
 #
 # Makefile for centos
 #
-#FC = f95
-FC = ifort
+FC = f95
+#FC = ifort
 CC = gcc
 PROGRAM = a.mpi
 ARCH = DEC
@@ -74,4 +74,4 @@ $(PROGRAM) : $(OBJS)
 $(OBJS) : parameter.h
 
 clean :
-	rm *.o 
+      rm *.o
