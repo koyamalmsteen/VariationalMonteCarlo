@@ -5,9 +5,14 @@
   </target>
 
   <target name="init">
+    <exec executable="sudo">
+      <arg line="yum -y install gcc"/>
+    </exec>
   </target>
 
-  <target name="vmc">
+  <target name="compile">
+    <exec executable="make" dir="src">
+    </exec>
   </target>
 
 </project>

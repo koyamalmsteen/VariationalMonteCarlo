@@ -72,6 +72,3 @@ $(PROGRAM) : $(OBJS)
 .c.o :
 	$(CC) -pg -c $(OPTN_COMPILE) $< -o $@
 $(OBJS) : parameter.h
-
-clean :
-      rm *.o
